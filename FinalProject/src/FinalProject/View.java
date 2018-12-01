@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package FinalProject;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 import java.awt.BorderLayout;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 public class View extends javax.swing.JFrame {
@@ -43,16 +41,19 @@ public class View extends javax.swing.JFrame {
         universeField = new javax.swing.JTextField();
         debutField = new javax.swing.JTextField();
         descField = new javax.swing.JTextField();
+        image = new javax.swing.JLabel();
         videoPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Super Smash Characters");
 
         nameTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
+                {"Mario"},
                 {null},
                 {null},
                 {null}
@@ -61,6 +62,11 @@ public class View extends javax.swing.JFrame {
                 "Characters"
             }
         ));
+        nameTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nameTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(nameTable);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(200, 573));
@@ -80,7 +86,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(descField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descField, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                     .addComponent(descLabel)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,13 +97,16 @@ public class View extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(debutField)
                             .addComponent(universeField)
-                            .addComponent(nameField))))
+                            .addComponent(nameField)))
+                    .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -122,7 +131,7 @@ public class View extends javax.swing.JFrame {
         videoPanel.setLayout(videoPanelLayout);
         videoPanelLayout.setHorizontalGroup(
             videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGap(0, 531, Short.MAX_VALUE)
         );
         videoPanelLayout.setVerticalGroup(
             videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +184,7 @@ public class View extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1203, Short.MAX_VALUE)
+            .addGap(0, 1192, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,41 +197,91 @@ public class View extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1203, Short.MAX_VALUE)
+            .addGap(0, 1192, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 606, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        jTabbedPane1.addTab("Stages", jPanel3);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\sasdas.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabel1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 75, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nameTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)nameTable.getModel();
+        int selectedRowIndex = nameTable.getSelectedRow();
+        
+        String character = model.getValueAt(selectedRowIndex,0).toString();
+        System.out.println(character);
+    }//GEN-LAST:event_nameTableMouseClicked
+
     //-------------------------------------------------------------
 
-    public void setVideo(String url) {
-        System.out.println("hola");
+    public void setCharacterModel(TableModel m) {
+        nameTable.setModel(m);
+    }
+    
+    public void setVideo() {
+        NativeInterface.open();
+        
+        
         JWebBrowser wb = new JWebBrowser();
         videoPanel.add(wb, BorderLayout.CENTER);
         wb.setBarsVisible(false);
-        wb.navigate(url);
+        wb.navigate("https://www.youtube.com/watch_popup?v=GKiHB5AzihE&t=150s");
+        
+        NativeInterface.runEventPump();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable(){
+            @Override
+            public void run(){
+                NativeInterface.close();
+            }
+        }));
+        
+    }
+    
+    
+    public void setName(String name){
+        nameField.setText(name);
+    }
+    
+    public void setUniverse(String universe){
+        universeField.setText(universe);
     }
 
+    public void setDebut(String debut){
+        debutField.setText(debut);
+    }
+    
+    public void setDescription(String desc){
+        descField.setText(desc);
+    }
+    
+    public void setImage(String dir){
+        image.setIcon(new javax.swing.ImageIcon(dir));
+        //image.setIcon(new javax.swing.ImageIcon("D:\\sasdas.png"));
+    }
+    
     //-------------------------------------------------------------
     
     
@@ -233,6 +292,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel debutLabel;
     private javax.swing.JTextField descField;
     private javax.swing.JLabel descLabel;
+    private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

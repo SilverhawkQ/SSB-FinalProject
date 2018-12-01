@@ -13,7 +13,7 @@ public class Main {
         View v = new View();
         
         v.setVisible(true);
-        
+        v.setVideo("https://www.youtube.com/watch_popup?v=GKiHB5AzihE&t=150s");
         
 //        m.setupDatabase();
 //        
