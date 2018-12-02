@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -241,6 +242,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        nameTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         nameTree.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nameTreeMouseClicked(evt);
@@ -290,7 +293,7 @@ public class View extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(videoButton)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,14 +482,14 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void videoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_videoButtonActionPerformed
+
+    }//GEN-LAST:event_videoButtonActionPerformed
+
     private void nameTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameTreeMouseClicked
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) nameTree.getSelectionPath().getLastPathComponent();
         selectField.setText(selectedNode.getUserObject().toString());
     }//GEN-LAST:event_nameTreeMouseClicked
-
-    private void videoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_videoButtonActionPerformed
-
-    }//GEN-LAST:event_videoButtonActionPerformed
 
     //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
     public void selectButtonListener(ActionListener a) {  //<<<<<<<<<<<<<<<<<<<<<<< Select Button
@@ -497,7 +500,7 @@ public class View extends javax.swing.JFrame {
         videoButton.addActionListener(a);
     }
 
-    public void setTableModel(DefaultTreeModel n) {
+    public void setTreeModel(DefaultTreeModel n) {
         nameTree.setModel(n);
     }
 
@@ -540,7 +543,8 @@ public class View extends javax.swing.JFrame {
     }
 
     public void setImage(String dir) {
-        image.setIcon(new javax.swing.ImageIcon(dir));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(dir).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+        image.setIcon(imageIcon);
         //image.setIcon(new javax.swing.ImageIcon("D:\\smash.png"));
     }
 

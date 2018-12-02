@@ -23,7 +23,14 @@ public class videoFrame {
             }
         });
 
-        NativeInterface.runEventPump();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!NativeInterface.isEventPumpRunning()) {
+                    NativeInterface.runEventPump();
+                }
+            }
+        }).start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
