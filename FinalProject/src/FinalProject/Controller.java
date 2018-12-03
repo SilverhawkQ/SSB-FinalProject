@@ -24,11 +24,29 @@ public class Controller {
         model.setupDatabase();
 
         model.addCharacter("1", "Mario", "Mario", "A fan favorite.", "Donkey Kong (1981)", "images/mario.png", "https://www.youtube.com/embed/INk1W8OujQI");
-        model.addAttack("1", "Smash", "Description", "50", "pics");
-        model.addStage("1", "Smash", "Description", "50", "pics");
-        */
+        model.addCharacter("2", "Pikachu", "Pokemon", "Makes billions of dollars.", "Pokemon Red and Green (1996)", "images/pikachu.png", "https://www.youtube.com/embed/7LfEvnLc3mI");
+        model.addCharacter("3", "Samus", "Metroid", "Wears a suit and shoots things.", "Metroid (1986)", "images/samus.png", "https://www.youtube.com/embed/Y4PTxiq11Fk");
 
+
+        model.addAttack("1", "Neutral Attack 1", "Description", "16", "images/neutral_attack_1.gif");
+        model.addAttack("2", "Forward tilt", "Pikachu kicks back with 2 legs.", "20", "images/forward_tilt.gif");
+        model.addAttack("3", "Slide special", "Slide and shoot.", "24", "images/slide_special.gif");
+        
+        model.addStage("1", "3D Land", "Mario", "The stage is a travelling stage that cycles through a castle area, a valley, a downhill area, and a water area, ending in a warp pipe that restarts the cycle.", "8", "images/3D_Land.png");
+        model.addStage("2", "Geat Plateau Tower", "Zelda", "The stage is a completely flat surface with a medium-sized structure above the middle of the floor acting as a ceiling. When hazards are on, the ceiling is destructible through two methods, which are by either damaging it with an attack, or having an opponent collide against it when they're being knocked back. ",
+        "8", "images/Great_Tower.jpg");
+        model.addStage("3", Green Hill Zone", "Sonic", "The stage consists in a single piece of land with a bridge on its left, walk-offs at both sides and a depression in the middle.", "8", "images/Green_Hill_Zone.png");
+ 
+        
+        */
         //Listeners
+        
+        
+//        model.addStage("1", "3D Land", "Mario", "8", "images/3D_Land.png");
+//        model.addStage("2", "Great Plateau Tower", "Zelda", "8", "images/Great_Tower.jpg");
+//        model.addStage("3","Green Hill Zone", "Sonic", "8", "images/Green_Hill_Zone.png");
+
+
         view.selectButtonListener((ActionEvent evt) -> {
             try {
                 ArrayList details = model.getCharacterDetails(view.getName());
@@ -65,7 +83,7 @@ public class Controller {
         });
         view.stageButtonListener((ActionEvent evt) -> {
             try {
-                ArrayList details = model.getAttackDetails(view.getStageComboBox().getSelectedItem().toString());
+                ArrayList details = model.getStageDetails(view.getStageComboBox().getSelectedItem().toString());
                 view.setStage(details.get(0).toString());
                 view.setUniverseName(details.get(1).toString());
                 view.setMaxPlayer(details.get(2).toString());
@@ -75,7 +93,7 @@ public class Controller {
             }
 
         });
-        
+
         view.setCharacterComboBoxModel(model.buildAttackComboBoxModel());
         view.setStageComboBoxModel(model.buildStageComboBoxModel());
         view.setTreeModel(model.pop_tree());
