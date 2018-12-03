@@ -11,7 +11,7 @@ public class videoFrame {
 
     public void init(String url) {
         NativeInterface.open();
-
+        
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame("Video");
@@ -40,7 +40,7 @@ public class videoFrame {
         }));
     }
 
-    public static JPanel getVideo(String url) {
+    public JPanel getVideo(String url) {
         JPanel wbPanel = new JPanel(new BorderLayout());
         JWebBrowser wb = new JWebBrowser();
         wbPanel.add(wb, BorderLayout.CENTER);

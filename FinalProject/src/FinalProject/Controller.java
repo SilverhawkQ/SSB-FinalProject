@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -19,14 +20,15 @@ public class Controller {
 
     public void init(View view, Model model) throws SQLException, ClassNotFoundException, Exception {
 
+        /*Setup model database
         model.setupDatabase();
 
         model.addCharacter("1", "Mario", "Mario", "A fan favorite.", "Donkey Kong (1981)", "images/mario.png", "https://www.youtube.com/embed/INk1W8OujQI");
-        model.addAttack("1", "Smash", "Descritipn", "50", "pics");
-        model.addStage("1", "Smash", "Descritipn", "50", "pics");
+        model.addAttack("1", "Smash", "Description", "50", "pics");
+        model.addStage("1", "Smash", "Description", "50", "pics");
+        */
 
-        view.setVisible(true);
-
+        //Listeners
         view.selectButtonListener((ActionEvent evt) -> {
             try {
                 ArrayList details = model.getCharacterDetails(view.getName());
@@ -40,7 +42,6 @@ public class Controller {
             }
 
         });
-
         view.videoButtonListener((ActionEvent evt) -> {
             try {
                 ArrayList details = model.getCharacterDetails(view.getName());
@@ -50,18 +51,36 @@ public class Controller {
             }
 
         });
+        view.attackButtonListener((ActionEvent evt) -> {
+            try {
+                ArrayList details = model.getAttackDetails(view.getCharacterComboBox().getSelectedItem().toString());
+                view.setAttack(details.get(0).toString());
+                view.setAttackDescription(details.get(1).toString());
+                view.setAttackLength(details.get(2).toString());
+                view.setAttackGIF(details.get(3).toString());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        model.setupDatabase();
+        });
+        view.stageButtonListener((ActionEvent evt) -> {
+            try {
+                ArrayList details = model.getAttackDetails(view.getStageComboBox().getSelectedItem().toString());
+                view.setStage(details.get(0).toString());
+                view.setUniverseName(details.get(1).toString());
+                view.setMaxPlayer(details.get(2).toString());
+                view.setStageImage(details.get(3).toString());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        model.addCharacter("1", "Mario", "Mario", "A fan favorite.", "Donkey Kong (1981)", "images/mario.png", "https://www.youtube.com/embed/INk1W8OujQI");
-        model.addAttack("1", "Smash", "Descritipn", "50", "pics");
-        model.addStage("1", "Smash", "Descritipn", "50", "pics");
-
+        });
+        
         view.setCharacterComboBoxModel(model.buildAttackComboBoxModel());
-
         view.setStageComboBoxModel(model.buildStageComboBoxModel());
-
         view.setTreeModel(model.pop_tree());
+
+        view.setVisible(true);  //Show View
 
     }
 

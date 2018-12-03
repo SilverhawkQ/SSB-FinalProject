@@ -3,7 +3,9 @@ package FinalProject;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -21,6 +23,10 @@ public class View extends javax.swing.JFrame {
     public View() {
 
         initComponents();
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((screen.getWidth() - getWidth()) /2);
+        int y = (int) ((screen.getHeight() -getHeight()) /2);
+        setLocation(x, y); 
     }
 
     /**
@@ -48,13 +54,6 @@ public class View extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         videoPanel = new javax.swing.JPanel();
         gif = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        attackLabel = new javax.swing.JLabel();
-        attackDescLabel = new javax.swing.JLabel();
-        animeLabel = new javax.swing.JLabel();
-        attackNameField = new javax.swing.JTextField();
-        attackDescField = new javax.swing.JTextField();
-        attackLengthField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         nameTree = new javax.swing.JTree();
         selectField = new javax.swing.JTextField();
@@ -71,6 +70,7 @@ public class View extends javax.swing.JFrame {
         attackDescLabel1 = new javax.swing.JLabel();
         attackLabel1 = new javax.swing.JLabel();
         gif2 = new javax.swing.JLabel();
+        attackButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         stageComboBox = new javax.swing.JComboBox<>();
@@ -81,6 +81,7 @@ public class View extends javax.swing.JFrame {
         stageNameField = new javax.swing.JTextField();
         attackLabel2 = new javax.swing.JLabel();
         stageImage = new javax.swing.JLabel();
+        stageButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,15 +103,19 @@ public class View extends javax.swing.JFrame {
 
         nameField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         nameField.setFocusable(false);
+        nameField.setPreferredSize(new java.awt.Dimension(180, 24));
 
         universeField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         universeField.setFocusable(false);
+        universeField.setPreferredSize(new java.awt.Dimension(180, 24));
 
         debutField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         debutField.setFocusable(false);
+        debutField.setPreferredSize(new java.awt.Dimension(180, 24));
 
         descField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         descField.setFocusable(false);
+        descField.setPreferredSize(new java.awt.Dimension(269, 140));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -134,20 +139,21 @@ public class View extends javax.swing.JFrame {
                         .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(descField)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(descLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(descField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(unverseLabel)
-                            .addComponent(debutLabel)
-                            .addComponent(nameLabel))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(universeField)
-                            .addComponent(nameField)
-                            .addComponent(debutField))))
+                            .addComponent(descLabel)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(unverseLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(debutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(debutField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(universeField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(44, 44, 44))
         );
         jPanel4Layout.setVerticalGroup(
@@ -157,26 +163,28 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(25, 25, 25))
+                        .addGap(22, 22, 22))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                            .addComponent(nameLabel))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(unverseLabel)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(universeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(universeField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(unverseLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(debutField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(debutLabel))
-                .addGap(18, 18, 18)
+                    .addComponent(debutLabel)
+                    .addComponent(debutField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(descLabel)
-                .addGap(18, 18, 18)
-                .addComponent(descField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(8, 8, 8)
+                .addComponent(descField, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                .addGap(37, 37, 37))
         );
 
         jScrollPane2.setViewportView(jPanel4);
@@ -187,69 +195,30 @@ public class View extends javax.swing.JFrame {
         videoPanel.setLayout(videoPanelLayout);
         videoPanelLayout.setHorizontalGroup(
             videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gif, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+            .addGroup(videoPanelLayout.createSequentialGroup()
+                .addComponent(gif)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         videoPanelLayout.setVerticalGroup(
             videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gif, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-        );
-
-        attackLabel.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
-        attackLabel.setText("Attack Name");
-
-        attackDescLabel.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
-        attackDescLabel.setText("Description");
-
-        animeLabel.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
-        animeLabel.setText("Animation Length");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(animeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(attackLengthField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attackLabel)
-                            .addComponent(attackDescLabel))
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(attackDescField, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                            .addComponent(attackNameField))))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(attackNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(attackLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(attackDescField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(attackDescLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(attackLengthField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(animeLabel))
-                .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(videoPanelLayout.createSequentialGroup()
+                .addComponent(gif)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         nameTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        nameTree.setRootVisible(false);
+        nameTree.getSelectionModel().setSelectionMode(javax.swing.tree.TreeSelectionModel.SINGLE_TREE_SELECTION);
         nameTree.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nameTreeMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(nameTree);
+
+        selectField.setEditable(false);
+        selectField.setFocusable(false);
 
         jLabel2.setFont(new java.awt.Font("Chaparral Pro Light", 1, 24)); // NOI18N
         jLabel2.setText("Character");
@@ -287,13 +256,11 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(videoButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,15 +277,13 @@ public class View extends javax.swing.JFrame {
                         .addComponent(selectButton)
                         .addGap(24, 24, 24))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
-                                .addComponent(videoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(videoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addContainerGap(27, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Characters", jPanel1);
@@ -329,6 +294,15 @@ public class View extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Chaparral Pro Light", 1, 24)); // NOI18N
         jLabel3.setText("Character Selection");
 
+        attackLengthField1.setEditable(false);
+        attackLengthField1.setFocusable(false);
+
+        attackDescField1.setEditable(false);
+        attackDescField1.setFocusable(false);
+
+        attackNameField1.setEditable(false);
+        attackNameField1.setFocusable(false);
+
         animeLabel1.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
         animeLabel1.setText("Animation Length");
 
@@ -337,6 +311,8 @@ public class View extends javax.swing.JFrame {
 
         attackLabel1.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
         attackLabel1.setText("Attack Name");
+
+        attackButton.setText("Select");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -360,7 +336,8 @@ public class View extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(attackNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(attackDescField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(attackDescField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(attackButton))
                         .addGap(40, 40, 40)
                         .addComponent(gif2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -385,7 +362,9 @@ public class View extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(attackLengthField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(animeLabel1)))
+                            .addComponent(animeLabel1))
+                        .addGap(29, 29, 29)
+                        .addComponent(attackButton))
                     .addComponent(gif2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
@@ -398,14 +377,25 @@ public class View extends javax.swing.JFrame {
         stageComboBox.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
         stageComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        maxPlayerField.setEditable(false);
+        maxPlayerField.setFocusable(false);
+
         animeLabel2.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
         animeLabel2.setText("Max Players");
 
         attackDescLabel2.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
         attackDescLabel2.setText("Universe");
 
+        universeNameField.setEditable(false);
+        universeNameField.setFocusable(false);
+
+        stageNameField.setEditable(false);
+        stageNameField.setFocusable(false);
+
         attackLabel2.setFont(new java.awt.Font("Chaparral Pro Light", 0, 18)); // NOI18N
         attackLabel2.setText("Stage Name");
+
+        stageButton.setText("Select");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -417,23 +407,22 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(animeLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(maxPlayerField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(attackLabel2)
-                                        .addComponent(attackDescLabel2))
-                                    .addGap(45, 45, 45)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(animeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(attackLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(attackDescLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(universeNameField)
-                                        .addComponent(stageNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(stageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(stageNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(maxPlayerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(stageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stageButton))
                         .addGap(18, 18, 18)
                         .addComponent(stageImage, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,17 +434,21 @@ public class View extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(stageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(attackLabel2)
+                            .addComponent(stageNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(attackDescLabel2)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(universeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stageNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(attackLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(universeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(attackDescLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxPlayerField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(animeLabel2)))
+                            .addComponent(maxPlayerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(animeLabel2))
+                        .addGap(44, 44, 44)
+                        .addComponent(stageButton))
                     .addComponent(stageImage, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
@@ -503,6 +496,14 @@ public class View extends javax.swing.JFrame {
     public void setTreeModel(DefaultTreeModel n) {
         nameTree.setModel(n);
     }
+    
+    public void attackButtonListener(ActionListener a) {
+        attackButton.addActionListener(a);
+    }
+    
+    public void stageButtonListener(ActionListener a) {
+        stageButton.addActionListener(a);
+    }
 
     //Character Tab Get-Set Methods------------------------------------
     public void setVideo(String url) {
@@ -512,6 +513,10 @@ public class View extends javax.swing.JFrame {
 
     public String getName() {
         return selectField.getText();
+    }
+    
+    public javax.swing.JTree getTree() {
+        return nameTree;
     }
 
     public void setName(String name) {
@@ -530,18 +535,6 @@ public class View extends javax.swing.JFrame {
         descField.setText(desc);
     }
 
-    public void setAttack(String attack) {
-        attackNameField.setText(attack);
-    }
-
-    public void setAttackDescription(String d) {
-        attackDescField.setText(d);
-    }
-
-    public void setAttackLength(String l) {
-        attackLengthField.setText(l);
-    }
-
     public void setImage(String dir) {
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(dir).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
         image.setIcon(imageIcon);
@@ -555,15 +548,15 @@ public class View extends javax.swing.JFrame {
 
     //END -------------------------------------------------------------
     //Attack Tab Get-Set Methods---------------------------------------
-    public void setAttack2(String attack) {
+    public void setAttack(String attack) {
         attackNameField1.setText(attack);
     }
 
-    public void setAttackDescription2(String d) {
+    public void setAttackDescription(String d) {
         attackDescField1.setText(d);
     }
 
-    public void setAttackLength2(String l) {
+    public void setAttackLength(String l) {
         attackLengthField1.setText(l);
     }
 
@@ -578,6 +571,10 @@ public class View extends javax.swing.JFrame {
 
     public javax.swing.JComboBox<String> getCharacterComboBox() {
         return characterComboBox;
+    }
+    
+    public javax.swing.JButton getAttackButton() {
+        return attackButton;
     }
     //END--------------------------------------------------------------
 
@@ -613,20 +610,15 @@ public class View extends javax.swing.JFrame {
     //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel animeLabel;
     private javax.swing.JLabel animeLabel1;
     private javax.swing.JLabel animeLabel2;
-    private javax.swing.JTextField attackDescField;
+    private javax.swing.JButton attackButton;
     private javax.swing.JTextField attackDescField1;
-    private javax.swing.JLabel attackDescLabel;
     private javax.swing.JLabel attackDescLabel1;
     private javax.swing.JLabel attackDescLabel2;
-    private javax.swing.JLabel attackLabel;
     private javax.swing.JLabel attackLabel1;
     private javax.swing.JLabel attackLabel2;
-    private javax.swing.JTextField attackLengthField;
     private javax.swing.JTextField attackLengthField1;
-    private javax.swing.JTextField attackNameField;
     private javax.swing.JTextField attackNameField1;
     private javax.swing.JComboBox<String> characterComboBox;
     private javax.swing.JTextField debutField;
@@ -644,7 +636,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -655,6 +646,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTree nameTree;
     private javax.swing.JButton selectButton;
     private javax.swing.JTextField selectField;
+    private javax.swing.JButton stageButton;
     private javax.swing.JComboBox<String> stageComboBox;
     private javax.swing.JLabel stageImage;
     private javax.swing.JTextField stageNameField;
